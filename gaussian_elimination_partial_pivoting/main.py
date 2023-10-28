@@ -60,9 +60,31 @@ def gaussian_elimination(a_matrix, b_matrix):
     print("Final matrix: \n")
     print(augmented_matrix)
 
+    time.sleep(2)
+
+    print("The values of your variables are: ")
+
+    time.sleep(2)
+
+    find_variables(augmented_matrix, n)
 
 
-a = np.array([[0, -1, 1],
+
+def find_variables(matrix, n):
+    k = n-1
+    values = [1] * n
+    while k >= 0:
+        denom = 0
+        for i in range(n):
+            denom = denom + values[i] * matrix[k][i]
+        x = matrix[k][n]/denom
+        k = k-1
+        values[k] = x
+        print("X",k+2," is: ",x)
+
+
+
+a = np.array([[1, -1, 1],
               [2, 3, -1],
               [3, -2, -9]
               ])
