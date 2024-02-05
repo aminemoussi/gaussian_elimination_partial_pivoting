@@ -71,16 +71,25 @@ def gaussian_elimination(a_matrix, b_matrix):
 
 
 def find_variables(matrix, n):
-    k = n-1
+    k = n - 1
     values = [1] * n
     while k >= 0:
         denom = 0
         for i in range(n):
             denom = denom + values[i] * matrix[k][i]
-        x = matrix[k][n]/denom
-        k = k-1
-        values[k] = x
-        print("X",k+2," is: ",x)
+
+        if denom == 0:
+            # Handle the case where denom is zero (optional: print a warning)
+            print("Warning: Denominator is zero. Setting the corresponding variable to zero.")
+            values[k] = 0
+        else:
+            x = matrix[k][n] / denom
+            values[k] = x
+
+        k = k - 1
+
+    return values
+
 
 
 
